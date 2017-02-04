@@ -10,8 +10,10 @@ env:
 
 install:
   - if [ "$INSTALLER" = "yarn" ]; then npm install -g yarn; fi
+  
+before_script:
+  - chmod +x *.sh
 
 script:
   - git clone $PROJECT_URL
-  - cd react
   - ./$INSTALLER.sh
