@@ -7,5 +7,5 @@ env:
 script:
   - git clone $PROJECT_URL
   - cd react
-  - if [ "$INSTALLER" = "npm" ]; then npm install fi
-  - if [ "$INSTALLER" = "yarn" ]; then yarn install fi
+  - if [ "$INSTALLER" = "npm" ]; then npm install; fi
+  - if [ "$INSTALLER" = "yarn" ]; then yarn install; fi
