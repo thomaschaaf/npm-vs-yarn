@@ -14,4 +14,4 @@ install:
 script:
   - git clone $PROJECT_URL
   - cd react
-  - ./scripts/$INSTALLER.sh
+  - ./$INSTALLER.sh
