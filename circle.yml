@@ -1,0 +1,11 @@
+dependencies:
+  pre:
+    - if [ "$CIRCLE_NODE_INDEX" = "0" ]; then export INSTALLER=yarn && export PROJECT_URL=https://github.com/facebook/react.git; fi
+    - if [ "$CIRCLE_NODE_INDEX" = "1" ]; then export INSTALLER=npm && export PROJECT_URL=https://github.com/facebook/react.git; fi
+
+test:
+  override:
+    - git clone $PROJECT_URL
+    - cd react
+    - if [ "$INSTALLER" = "npm" ]; then npm install; fi
+    - if [ "$INSTALLER" = "yarn" ]; then yarn install; fi
