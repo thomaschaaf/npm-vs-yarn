@@ -1,6 +1,9 @@
 #!/bin/bash
-cd react
 npm config set loglevel warn
+
+gclonecd() {
+  git clone "$1" npm-local-dir && cd npm-local-dir
+}
 
 function install {
   # clean cache
@@ -31,9 +34,11 @@ function install {
   fi
 
   SECONDS=0
-  npm install
+  npm install --silent
   echo "$SECONDS s CACHE: $1, NODE_MODULES: $2, LOCKFILE: $3"
 }
+
+gclonecd $1
 
 # CACHE: cold, NODE_MODULES: empty, LOCKFILE: no
 install cold empty no
@@ -58,3 +63,5 @@ install warm installed no
 
 # CACHE: warm, NODE_MODULES: installed, LOCKFILE: yes
 install warm installed yes
+
+cd .. && rm -rf ./npm-local-dir

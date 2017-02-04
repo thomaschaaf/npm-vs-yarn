@@ -5,10 +5,10 @@ node_js:
 env:
   matrix:
     # parallelize tests
-    - INSTALLER=yarn INSTALLER_VERSION=stable PROJECT_URL=https://github.com/facebook/react.git
-    - INSTALLER=yarn INSTALLER_VERSION=next PROJECT_URL=https://github.com/facebook/react.git
-    - INSTALLER=npm INSTALLER_VERSION=stable PROJECT_URL=https://github.com/facebook/react.git
-    - INSTALLER=npm INSTALLER_VERSION=next PROJECT_URL=https://github.com/facebook/react.git
+    - INSTALLER=yarn INSTALLER_VERSION=stable
+    - INSTALLER=yarn INSTALLER_VERSION=next
+    - INSTALLER=npm INSTALLER_VERSION=stable
+    - INSTALLER=npm INSTALLER_VERSION=next
 
 install:
   - if [[ $INSTALLER == "yarn" ]] && [[ $INSTALLER_VERSION == "stable" ]]; then npm install -g yarn; fi
@@ -19,5 +19,5 @@ before_script:
   - chmod +x *.sh
 
 script:
-  - git clone $PROJECT_URL
-  - ./$INSTALLER.sh
+  - ./$INSTALLER.sh https://github.com/facebook/react.git
+  - ./$INSTALLER.sh https://github.com/TryGhost/Ghost.git
