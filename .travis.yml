@@ -1,0 +1,11 @@
+env:
+  matrix:
+    # parallelize tests
+    - INSTALLER=yarn PROJECT_URL=https://github.com/facebook/react.git
+    - INSTALLER=npm PROJECT_URL=https://github.com/facebook/react.git
+
+script:
+  - git clone $PROJECT_URL
+  - cd react
+  - if [ "$INSTALLER" = "npm" ]; then npm install fi
+  - if [ "$INSTALLER" = "yarn" ]; then yarn install fi
