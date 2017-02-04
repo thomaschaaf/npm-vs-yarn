@@ -6,14 +6,14 @@ env:
   matrix:
     # parallelize tests
     - INSTALLER=yarn INSTALLER_VERSION=stable PROJECT_URL=https://github.com/facebook/react.git
-    #- INSTALLER=yarn INSTALLER_VERSION=next PROJECT_URL=https://github.com/facebook/react.git
+    - INSTALLER=yarn INSTALLER_VERSION=next PROJECT_URL=https://github.com/facebook/react.git
     - INSTALLER=npm INSTALLER_VERSION=stable PROJECT_URL=https://github.com/facebook/react.git
-    #- INSTALLER=npm INSTALLER_VERSION=next PROJECT_URL=https://github.com/facebook/react.git
+    - INSTALLER=npm INSTALLER_VERSION=next PROJECT_URL=https://github.com/facebook/react.git
 
 install:
-  - if [ "$INSTALLER" = "yarn" && "INSTALLER_VERSION" = "stable" ]; then npm install -g yarn; fi
-  - if [ "$INSTALLER" = "yarn" && "INSTALLER_VERSION" = "next" ]; then npm install -g yarn; fi
-  - if [ "$INSTALLER" = "npm" && "INSTALLER_VERSION" = "next" ]; then npm install -g npm; fi
+  - if [ "$INSTALLER" = "yarn" ] && [ "INSTALLER_VERSION" = "stable" ]; then npm install -g yarn; fi
+  - if [ "$INSTALLER" = "yarn" ] && [ "INSTALLER_VERSION" = "next" ]; then npm install -g yarn@rc; fi
+  - if [ "$INSTALLER" = "npm" ] && [ "INSTALLER_VERSION" = "next" ]; then npm install -g npm@next; fi
 
 before_script:
   - chmod +x *.sh
