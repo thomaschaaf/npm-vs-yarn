@@ -1,5 +1,6 @@
 #!/bin/bash
 cd react
+npm config set loglevel warn
 
 function install {
   # clean cache
@@ -11,7 +12,7 @@ function install {
   if [ "$2" = "empty" ]; then
     rm -rf node_modules
   fi
-  
+
   # remove node_modules
   if [ "$3" = "no" ]; then
     if [ -e "yarn.lock" ]; then
@@ -22,16 +23,16 @@ function install {
     fi
   else
     if [ -e ".yarn.lock" ]; then
-      mv .yarn.lock yarn.lock 
+      mv .yarn.lock yarn.lock
     fi
     if [ -e ".npm-shrinkwrap.json" ]; then
       mv .npm-shrinkwrap.json npm-shrinkwrap.json
     fi
   fi
-  
+
   SECONDS=0
   npm install
-  echo "$SECONDS s CACHE: $1, NODE_MODULES: $2, LOCKFILE: $3
+  echo "$SECONDS s CACHE: $1, NODE_MODULES: $2, LOCKFILE: $3"
 }
 
 # CACHE: cold, NODE_MODULES: empty, LOCKFILE: no
