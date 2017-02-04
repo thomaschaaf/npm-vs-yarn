@@ -8,7 +8,7 @@ gclonecd() {
 function install {
   # clean cache
   if [ "$1" = "cold" ]; then
-    npm cache clean
+    npm cache clean --silent
   fi
 
   # remove node_modules
@@ -36,6 +36,12 @@ function install {
   SECONDS=0
   npm install --silent
   echo "$SECONDS s CACHE: $1, NODE_MODULES: $2, LOCKFILE: $3"
+
+  if [ ! -f .npm-shrinkwrap.json ]; then
+    if [ ! -f npm-shrinkwrap.json ]; then
+      npm shrinkwrap --dev --silent
+    fi
+  fi
 }
 
 gclonecd $1
