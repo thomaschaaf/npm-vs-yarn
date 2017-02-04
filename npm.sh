@@ -14,10 +14,16 @@ function install {
   
   # remove node_modules
   if [ "$3" = "no" ]; then
+    if [ -e "yarn.lock" ]; then
+      mv yarn.lock .yarn.lock
+    fi
     if [ -e "npm-shrinkwrap.json" ]; then
       mv npm-shrinkwrap.json .npm-shrinkwrap.json
     fi
   else
+    if [ -e ".yarn.lock" ]; then
+      mv .yarn.lock yarn.lock 
+    fi
     if [ -e ".npm-shrinkwrap.json" ]; then
       mv .npm-shrinkwrap.json npm-shrinkwrap.json
     fi
