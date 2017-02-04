@@ -4,7 +4,7 @@ cd react
 function install {
   # clean cache
   if [ "$1" = "cold" ]; then
-    yarn cache clean
+    npm cache clean
   fi
 
   # remove node_modules
