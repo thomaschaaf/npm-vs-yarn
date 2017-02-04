@@ -4,6 +4,9 @@ env:
     - INSTALLER=yarn PROJECT_URL=https://github.com/facebook/react.git
     - INSTALLER=npm PROJECT_URL=https://github.com/facebook/react.git
 
+install:
+  - if [ "$INSTALLER" = "yarn" ]; then npm install -g yarn; fi
+
 script:
   - git clone $PROJECT_URL
   - cd react
