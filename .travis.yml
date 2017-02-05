@@ -26,5 +26,5 @@ before_script:
   - chmod +x *.sh
 
 script:
-  - export GOOGLE_OAUTH_TOKEN=$(curl --request POST --url https://www.googleapis.com/oauth2/v3/token --header 'content-type: application/x-www-form-urlencoded' -d "client_secret=$GOOGLE_OAUTH_CLIENT_SECRET&grant_type=refresh_token&refresh_token=$GOOGLE_OAUTH_REFRESH_TOKEN&client_id=$GOOGLE_OAUTH_CLIENT_ID" | jq -r '.access_token')
+  - export GOOGLE_OAUTH_TOKEN=$(curl --request POST --url https://www.googleapis.com/oauth2/v3/token -d "client_secret=$GOOGLE_OAUTH_CLIENT_SECRET&grant_type=refresh_token&refresh_token=$GOOGLE_OAUTH_REFRESH_TOKEN&client_id=$GOOGLE_OAUTH_CLIENT_ID" | jq -r '.access_token')
   - ./$INSTALLER.sh $NAME $REPO
