@@ -13,6 +13,7 @@ env:
 install:
   - if [[ $INSTALLER == "yarn" ]] && [[ $INSTALLER_VERSION == "stable" ]]; then npm install -g yarn; fi
   - if [[ $INSTALLER == "yarn" ]] && [[ $INSTALLER_VERSION == "next" ]]; then npm install -g yarn@rc; fi
+  - if [[ $INSTALLER == "npm" ]] && [[ $INSTALLER_VERSION == "stable" ]]; then npm install -g npm; fi
   - if [[ $INSTALLER == "npm" ]] && [[ $INSTALLER_VERSION == "next" ]]; then npm install -g npm@next; fi
 
 before_script:
