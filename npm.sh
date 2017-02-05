@@ -1,8 +1,11 @@
 #!/bin/bash
 npm config set loglevel warn
 
+NAME=$1
+REPO=$2
+
 gclonecd() {
-  git clone "$1" npm-local-dir && cd npm-local-dir
+  git clone "$REPO" npm-local-dir && cd npm-local-dir
 }
 
 function install {
@@ -35,7 +38,10 @@ function install {
 
   SECONDS=0
   npm install --silent
-  echo "$SECONDS s CACHE: $1, NODE_MODULES: $2, LOCKFILE: $3"
+  ls -lah ..
+  DURATION=`echo $SECONDS`
+  ../gdocs.sh $NAME $REPO $INSTALLER $INSTALLER_VERSION $($INSTALLER --version) $1 $2 $3 $DURATION
+  echo "$DURATION s CACHE: $1, NODE_MODULES: $2, LOCKFILE: $3"
 
   if [ ! -f .npm-shrinkwrap.json ]; then
     if [ ! -f npm-shrinkwrap.json ]; then

@@ -19,5 +19,5 @@ before_script:
   - chmod +x *.sh
 
 script:
-  - ./$INSTALLER.sh https://github.com/facebook/react.git
-  - ./$INSTALLER.sh https://github.com/TryGhost/Ghost.git
+  - ./$INSTALLER.sh react https://github.com/facebook/react.git
+  - ./$INSTALLER.sh ghost https://github.com/TryGhost/Ghost.git

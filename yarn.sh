@@ -1,6 +1,9 @@
 #!/bin/bash
+NAME=$1
+REPO=$2
+
 gclonecd() {
-  git clone "$1" npm-local-dir && cd npm-local-dir
+  git clone "$REPO" npm-local-dir && cd npm-local-dir
 }
 
 function install {
@@ -33,7 +36,9 @@ function install {
 
   SECONDS=0
   yarn install --no-progress
-  echo "$SECONDS s CACHE: $1, NODE_MODULES: $2, LOCKFILE: $3"
+  DURATION=`echo $SECONDS`
+  ../gdocs.sh $NAME $REPO $INSTALLER $INSTALLER_VERSION $($INSTALLER --version) $1 $2 $3 $DURATION
+  echo "$DURATION s CACHE: $1, NODE_MODULES: $2, LOCKFILE: $3"
 }
 
 gclonecd $1
