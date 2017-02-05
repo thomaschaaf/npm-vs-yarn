@@ -14,7 +14,7 @@ DATE=`date +%Y-%m-%d`
 SPREADSHEET=1ZE5B4qJw1kNGMzjgslcWTuPYrpatzQJXSYMGNOhZ2ys
 TABLE=Data
 
-curl -v --request POST \
+curl --request POST \
   --url "https://sheets.googleapis.com/v4/spreadsheets/$SPREADSHEET/values/$TABLE:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS" \
   --header "authorization: Bearer $GOOGLE_OAUTH_TOKEN" \
   --header 'content-type: application/json' \
