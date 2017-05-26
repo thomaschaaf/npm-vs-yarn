@@ -35,7 +35,7 @@ function install {
   fi
 
   SECONDS=0
-  yarn install --no-progress
+  time yarn install --no-progress
   DURATION=`echo $SECONDS`
   ../gdocs.sh $NAME $REPO $INSTALLER $INSTALLER_VERSION $($INSTALLER --version) $1 $2 $3 $DURATION
   echo "$DURATION s CACHE: $1, NODE_MODULES: $2, LOCKFILE: $3"
